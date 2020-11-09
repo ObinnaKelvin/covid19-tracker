@@ -111,6 +111,7 @@ function LineGraph({ casesType = "cases"}) {
                 />
 
             )}
+                {/* Testing the new upload */}
                 {/* <Line data options /> */}
         </div>
     )
