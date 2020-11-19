@@ -1,0 +1,8 @@
+.infoBox {
+    flex: 1;
+}
+
+.infoBox:not(:last-child) {
+    margin-right: 15px; /* Every infoBox gets a 10px margin right except the last box */
+}
+

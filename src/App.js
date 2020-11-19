@@ -22,7 +22,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
-
+  const [mapCountries, setMapCountries] = useState([]);
 
   //To Fetch the "worldwide" data that appears when page loads.
   useEffect(() => {
@@ -51,6 +51,7 @@ function App() {
         const sortedData = sortData(data); //Sort Function
         setTableData(sortedData); //Set Table data
         setCountries(countries); //Set Countries data
+        setMapCountries(data);
       })
     };
 
@@ -70,6 +71,11 @@ function App() {
     .then(data => {
       //All of the data from the country response
       setCountryInfo(data);
+      // console.log("See Data: ", data);
+      setMapZoom(4);
+      setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+      
+      console.log("Zoom: ", mapZoom);
     });
   };
   console.log('Country Info >>>', countryInfo);
@@ -105,6 +111,7 @@ function App() {
 
       {/* Map */}
       <Map 
+        countries = {mapCountries}
         center = {mapCenter}
         zoom = {mapZoom}
       />
