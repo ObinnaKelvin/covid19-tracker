@@ -40,3 +40,10 @@
     width: 150px;
 }
 /* MaP Css */
+
+@media (max-width: 990px) {
+    .map {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+   }
