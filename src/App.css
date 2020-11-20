@@ -12,6 +12,17 @@ body {
   justify-content: space-evenly;
   padding: 20px;
 }
+
+.app__dropdown {
+  background-color: white;
+  /* border: 2px solid red !important; */
+}
+
+
+.app__header > h1 {
+  color: red;
+  font-size: 2rem;
+}
 .app__header {
   display: flex; /* this by default pushes elements to a row */
   /* flex-direction: row; */ /*Same as above*/
@@ -32,5 +43,10 @@ body {
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
+  }
+  .app__dropdown {
+    width: 250px;
+    font-size: 18rem !important;
+    /* border: 2px solid red !important; */
   }
 }

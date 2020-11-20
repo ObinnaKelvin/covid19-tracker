@@ -16,7 +16,7 @@ var myIcon = L.icon ({
     popupAnchor: [0, -41] 
 })
 
-function Map({ countries, casesType, center, zoom }) {
+function Map({ countries, casesType, center, zoom, color }) {
     return (
         <div className="map">
             {/* <h1>I am a Map</h1> */}
@@ -38,7 +38,7 @@ function Map({ countries, casesType, center, zoom }) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {/* Loop through countries and draw circles on the screen */}
-                { showDataOnMap(countries, casesType) }
+                { showDataOnMap(countries, casesType, color) }
                 <Marker position={center} icon={myIcon}>
                     <Popup>
                     A pretty CSS3 popup. <br /> Easily customizable.

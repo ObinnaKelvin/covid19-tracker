@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { Line } from "react-chartjs-2";
+import "./LineGraph.css";
 import numeral from "numeral";
 
 const options = {
@@ -77,7 +78,7 @@ function LineGraph({ casesType = "cases"}) {
             .then(data => {
                 // setData(data);
                 // console.log("Graph Data: ", data)
-                let chartData = buildChartData(data, "cases");
+                let chartData = buildChartData(data, casesType);
                 setData(chartData);
             })
         }
@@ -93,8 +94,8 @@ function LineGraph({ casesType = "cases"}) {
 
 
     return (
-        <div>
-            <h1>I am a Graph</h1>
+        <div className="linegraph">
+            {/* <h1>I am a Graph</h1> */}
 
             {data?.length > 0 &&  (
                 <Line 
@@ -104,6 +105,8 @@ function LineGraph({ casesType = "cases"}) {
                             {
                                 data: data,
                                 backgroundColor: "rgba(204, 16, 52, 0.5)",
+                                // backgroundColor: color,
+                                // borderColor: {color},
                                 borderColor: "#CC1034",
                             }
                         ],

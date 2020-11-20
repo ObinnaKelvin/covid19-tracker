@@ -4,7 +4,7 @@ import { FormControl, Select, MenuItem, Card, CardContent } from "@material-ui/c
 import InfoBox from "../src/InfoBox";
 import Map from "./Map";
 import Table from "./Table";
-import { sortData } from "./util";
+import { sortData, prettyPrintStat } from "./util";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
 
@@ -23,7 +23,8 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState([]);
-
+  const [casesType, setCasesType] = useState("cases");
+  const [color, setColor] = useState("#CC1034");
   //To Fetch the "worldwide" data that appears when page loads.
   useEffect(() => {
     fetch("https://www.disease.sh/v3/covid-19/all")
@@ -58,6 +59,9 @@ function App() {
     getCountriesData();
   }, [])
 
+  console.log("Cases Type:", casesType);
+  console.log("New Color:", color);
+
   const onCountryChange = (event) =>{
     const countryCode = event.target.value;
     // console.log(countryCode);
@@ -80,6 +84,42 @@ function App() {
   };
   console.log('Country Info >>>', countryInfo);
 
+  const onColorChange = (casesType) => {
+    // var caseType = "cases";
+    if(casesType === "cases") {
+      setCasesType('cases');
+      setColor("#CC1034");
+    }
+    if(casesType === "recovered") {
+      setCasesType('recovered');
+      setColor("#7dd71d");
+    } 
+    if(casesType === "deaths") {
+      setCasesType('deaths');
+      setColor("#fb4443");
+    }
+    // else {
+    //   setColor("#fb4443");
+    // }    
+    // switch (caseType) {
+    //   case "cases":
+    //   setColor("#CC1034");
+    //   break;
+
+    //   case "recovered":
+    //   setColor("#7dd71d");
+    //   break;
+
+    //   case "deaths":
+    //     setColor("#fb4443");
+    //     break;
+    //   default:
+    //     setColor("#CC1034");
+    //     break;
+    // }
+    console.log("InColor:", casesType)
+
+  } 
   
   return (
     //BEM Naming Convention
@@ -104,9 +144,35 @@ function App() {
         </div>
 
         <div className = "app__stats">
-              <InfoBox title="Coronavirus cases" cases={countryInfo.todayCases}  total={countryInfo.cases}/>
-              <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>      
-              <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>      
+              <InfoBox
+                //  onClick = {e => setCasesType('cases'), onColorChange(casesType)}
+                 isRed
+                 active = {casesType === "cases"} //Active State
+                 onClick = {e => onColorChange('cases')}
+                 title="Cases" 
+                 cases={prettyPrintStat(countryInfo.todayCases)}  
+                 total={prettyPrintStat(countryInfo.cases)}
+                //  color = {color}
+              />
+              <InfoBox
+                //  onClick = {e => setCasesType('recovered'), onColorChange(casesType)}
+                 active = {casesType === "recovered"} //Active State
+                 onClick = {e => onColorChange('recovered')}
+                 title="Recovered" 
+                 cases={prettyPrintStat(countryInfo.todayRecovered)} 
+                 total={prettyPrintStat(countryInfo.recovered)}
+                //  color = {color}
+              />      
+              <InfoBox
+                //  onClick = {e => setCasesType('deaths'), onColorChange(casesType)}
+                 isRed
+                 active = {casesType === "deaths"} //Active State
+                 onClick = {e => onColorChange('deaths')}
+                 title="Deaths" 
+                 cases={prettyPrintStat(countryInfo.todayDeaths)} 
+                 total={prettyPrintStat(countryInfo.deaths)}
+                //  color = {color}
+              />      
         </div>
 
       {/* Map */}
@@ -114,6 +180,8 @@ function App() {
         countries = {mapCountries}
         center = {mapCenter}
         zoom = {mapZoom}
+        casesType = {casesType}
+        color = {color}
       />
       </div>   
 
@@ -122,9 +190,9 @@ function App() {
           <h3>Live Cases by Country</h3>
         {/* Table */}
           <Table countries={tableData}/>
-          <h3>Worldwide new Cases</h3>
+          <h3>Worldwide new {casesType} </h3>
         {/* Graph */}
-        <LineGraph /> 
+        <LineGraph casesType = {casesType}/> 
         </CardContent>
       </Card>
     </div>
