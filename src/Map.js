@@ -2,7 +2,7 @@ import React from 'react'
 import './css/Map.css';
 import L from 'leaflet';
 // import { LeafletMap, TileLayer } from "react-leaflet";
-import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
+import { Map as LeafletMap, TileLayer, Marker, Popup} from "react-leaflet";
 import icon from './img/marker-icon.png';
 import iconShadow from './img/marker-shadow.png';
 import { showDataOnMap } from './util';
@@ -31,8 +31,8 @@ function Map({ countries, casesType, center, zoom, color }) {
                     </Popup>
                 </Marker>                
             </LeafletMap> */}
-            {/* <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}> */}
-            <MapContainer center={center} zoom={zoom} scrollWheelZoom={true}>
+            {/* <LeafletMap center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}> */}
+            <LeafletMap center={center} zoom={zoom} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -44,7 +44,7 @@ function Map({ countries, casesType, center, zoom, color }) {
                     A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
                 </Marker>
-            </MapContainer>
+            </LeafletMap>
         </div>
     )
 }
