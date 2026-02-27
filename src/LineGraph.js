@@ -1,52 +1,68 @@
-import React, { useEffect, useState} from 'react'
-import { Line } from "react-chartjs-2";
-import "./LineGraph.css";
-import numeral from "numeral";
+import React, { useEffect, useState } from 'react'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale,
+} from 'chart.js';
+import 'chartjs-adapter-date-fns';
+import { Line } from 'react-chartjs-2';
+import './LineGraph.css';
+import numeral from 'numeral';
+
+// register components required by Chart.js v3+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  TimeScale
+);
 
 const options = {
-    legend: {
-        display: false
-    },
-    elements: {
-        point: {
-            radius: 0,
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      mode: 'index',
+      intersect: false,
+      callbacks: {
+        label(context) {
+          return numeral(context.parsed.y).format('+0,0');
         },
+      },
     },
-    maintainAspectRatio: false,
-    tooltips: {
-        mode: "index",
-        intersect: false,
-        callbacks: {
-            label: function (tooltipItem, data){
-                return numeral(tooltipItem.value).format("+0,0");
-            },
+  },
+  elements: {
+    point: { radius: 0 },
+  },
+  scales: {
+    x: {
+      type: 'time',
+      time: {
+        parser: 'MM/DD/YY',
+        tooltipFormat: 'll',
+      },
+    },
+    y: {
+      grid: { display: false },
+      ticks: {
+        callback(value) {
+          return numeral(value).format('0a');
         },
+      },
     },
-    scales: {
-        xAxes: [
-            {
-                type: "time",
-                time: {
-                    parser: "MM/DD/YY",
-                    tooltipFormat: "ll",
-                },
-            },
-        ],
-        yAxes: [
-            {
-                gridLines: {
-                    display: false,
-                },
-                ticks: {
-                    //include a dollar sign in the ticks
-                    callback: function (value, index, values) {
-                        return numeral(value).format("0a");
-                    }
-                }
-            }
-        ]
-    }
-}
+  },
+};
 
 
 const buildChartData = ( data, casesType) => {
