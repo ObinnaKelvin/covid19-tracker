@@ -1,68 +1,100 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🌍 COVID-19 Tracker Application
 
-## Available Scripts
+A real-time web application that displays global statistics of Coronavirus (COVID-19), including confirmed cases, deaths, recoveries, and new cases across different countries and regions.
 
-In the project directory, you can run:
+📊 Overview
 
-### `npm start`
+This application was built to provide quick, reliable, and accessible insights into the global impact of the COVID-19 pandemic. It aggregates live data from a trusted public API and presents it through a clean and user-friendly interface, enabling users to monitor trends and stay informed.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+✨ Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+🌐 Global Statistics Dashboard
+View worldwide totals for confirmed cases, deaths, and recoveries
 
-### `npm test`
+📍 Country-Specific Data
+Track COVID-19 statistics by individual countries
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔄 Real-Time Data Updates
+Automatically fetches and updates data from a reliable API
 
-### `npm run build`
+📈 Key Metrics Display
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Total Cases
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Deaths
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Recoveries
 
-### `npm run eject`
+New Cases
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+📱 Responsive Design
+Optimised for mobile, tablet, and desktop devices
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🛠️ Tech Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+(Customize as needed)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Frontend: HTML, CSS, JavaScript / React
 
-## Learn More
+API: Public COVID-19 Data API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Version Control: Git & GitHub
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🚀 Getting Started
+Prerequisites
 
-### Code Splitting
+Web browser
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Internet connection
 
-### Analyzing the Bundle Size
+Installation
+# Clone the repository
+git clone https://github.com/ObinnaKelvin/covid19-tracker.git
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+# Navigate into the project directory
+cd covid19-tracker
+Run the App
+# If it's a simple HTML/JS app
+Open index.html in your browser
 
-### Making a Progressive Web App
+Or (for React apps):
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+npm install
+npm start
+📂 Project Structure
+covid19-tracker/v2/
+│── src/            # Application source files
+│── public/         # Static assets
+│── components/     # Reusable UI components (if React)
+│── services/       # API calls and data handling
+│── README.md
+🎯 Purpose
 
-### Advanced Configuration
+This project was developed to:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Provide real-time visibility into the COVID-19 pandemic
 
-### Deployment
+Support data-driven awareness and decision-making
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Demonstrate practical integration of APIs in web applications
 
-### `npm run build` fails to minify
+🌍 Impact
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The application served as a quick-access digital tool for monitoring pandemic data, helping users—including healthcare environments—stay informed without relying on multiple data sources.
+
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repository
+
+Create a new branch
+
+Submit a pull request
+
+
+
+👤 Author
+
+Developed by Obinna Okere of Kobisoft Digitals
+Building impactful digital solutions.
