@@ -54,15 +54,13 @@ git clone https://github.com/ObinnaKelvin/covid19-tracker.git
 # Navigate into the project directory
 cd covid19-tracker
 Run the App
-# If it's a simple HTML/JS app
-Open index.html in your browser
-
-Or (for React apps):
 
 npm install
 npm start
+
 📂 Project Structure
 covid19-tracker/v2/
+
 │── src/            # Application source files
 │── public/         # Static assets
 │── components/     # Reusable UI components (if React)
